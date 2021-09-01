@@ -1,0 +1,107 @@
+paths:
+  /users:
+    get:
+      tags:
+        - users
+      summary: users list
+      x-swagger-router-controller: universal.search
+      parameters:
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/sorting'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/fields'
+
+      responses:
+        '200':
+          description: reports
+          schema:
+            $ref: '#/definitions/users'
+    put:
+      tags:
+        - users
+      summary: insert new cart
+      x-swagger-router-controller: universal.insert
+      parameters:
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/userInput'
+      responses:
+        '200':
+          description: cart added
+          schema:
+            $ref: '#/definitions/users'
+
+    delete:
+      tags:
+        - users
+      summary: delete cart
+      x-swagger-router-controller: universal.remove
+      parameters:
+        - name: _id
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: deleted cart
+          schema:
+            $ref: '#/definitions/users'
+
+    patch:
+      tags:
+        - users
+      summary: for updated cart document
+      x-swagger-router-controller: universal.update
+      parameters:
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/userUpdate'
+      responses:
+        '200':
+          description: updated cart
+          schema:
+            $ref: '#/definitions/users'
+
+definitions:
+  userInput:
+    x-swagger-model-version: 3
+    type: object
+    properties:
+      firstname:
+        type: string
+        required: true
+      lastname:
+        type: string
+        required: false
+      email:
+        type: string
+        required: true
+        format: email
+      dni:
+        type: integer
+        default: 0
+
+
+  userUpdate:
+    type: object
+    properties:
+      _id:
+        type: string
+        format: mongoId
+
+  users:
+    type: object
+    properties:
+      firstname:
+        type: string
+      lastname:
+        type: string
+      dni:
+        type: string
+      email:
+        type: string

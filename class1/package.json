@@ -1,0 +1,33 @@
+{
+  "name": "universal-pattern-class1",
+  "version": "1.0.0",
+  "description": "First class universal pattern",
+  "main": "app.js",
+  "scripts": {
+      "test": "mocha",
+      "start": "node app.js",
+      "watch": "./node_modules/.bin/nodemon bin/www"
+    },
+  "keywords": [
+    "universal",
+    "pattern",
+    "vision",
+    "group"
+  ],
+  "author": "Cesar Casas",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.6",
+    "express": "^4.17.1",
+    "universal-pattern": "^1.0.29"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.25.1",
+    "nodemon": "^2.0.12"
+  }
+}

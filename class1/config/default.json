@@ -1,0 +1,13 @@
+{
+  "basePath": "/services",
+  "host": "localhost",
+  "port": 5000,
+  "name": "universal-pattern-class1",
+  "version": "0.1",
+  "connection": {
+    "mongodb": {
+      "uri": "mongodb://127.0.0.1",
+      "name": "upecommerce"
+    }
+  }
+}

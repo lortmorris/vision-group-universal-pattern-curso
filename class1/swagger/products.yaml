@@ -1,0 +1,98 @@
+paths:
+  /products:
+    get:
+      tags:
+        - products
+      summary: products list
+      x-swagger-router-controller: universal.search
+      parameters:
+        - $ref: '#/parameters/q'
+        - $ref: '#/parameters/page'
+        - $ref: '#/parameters/sorting'
+        - $ref: '#/parameters/limit'
+        - $ref: '#/parameters/fields'
+
+      responses:
+        '200':
+          description: reports
+          schema:
+            $ref: '#/definitions/products'
+    put:
+      tags:
+        - products
+      summary: insert new cart
+      x-swagger-router-controller: universal.insert
+      parameters:
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/productInput'
+      responses:
+        '200':
+          description: cart added
+          schema:
+            $ref: '#/definitions/products'
+
+    delete:
+      tags:
+        - products
+      summary: delete cart
+      x-swagger-router-controller: universal.remove
+      parameters:
+        - name: _id
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: deleted cart
+          schema:
+            $ref: '#/definitions/products'
+
+    patch:
+      tags:
+        - products
+      summary: for updated cart document
+      x-swagger-router-controller: universal.update
+      parameters:
+        - name: modeldata
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/productUpdate'
+      responses:
+        '200':
+          description: updated cart
+          schema:
+            $ref: '#/definitions/products'
+
+definitions:
+  productInput:
+    x-swagger-model-version: 3
+    type: object
+    properties:
+      name:
+        type: string
+        required: true
+      description:
+        type: string
+        required: false
+      price:
+        type: integer
+        format: float
+        default: 0
+
+
+  productUpdate:
+    type: object
+    properties:
+      _id:
+        type: string
+        format: mongoId
+
+  products:
+    type: object
+    properties:
+      name:
+        type: string
